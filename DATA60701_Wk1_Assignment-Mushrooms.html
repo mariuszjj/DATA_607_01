@@ -308,22 +308,141 @@ head(mushrooms)</code></pre>
 <div id="create-a-data-frame-with-a-subset-of-the-columns-in-the-dataset" class="section level3">
 <h3>Create a Data Frame with a Subset of the Columns in the Dataset</h3>
 <pre class="r"><code># Create a data frame with columns: classes, capcolor, odor, population and habitat 
-mushroomssubset &lt;- data.frame(mushrooms$classes,mushrooms$capcolor,mushrooms$odor,mushrooms$population,mushrooms$habitat)
-head(mushroomssubset)</code></pre>
-<pre><code>##   mushrooms.classes mushrooms.capcolor mushrooms.odor mushrooms.population
-## 1         poisonous              brown        pungent            scattered
-## 2            edible             yellow         almond             numerous
-## 3            edible              white          anise             numerous
-## 4         poisonous              white        pungent            scattered
-## 5            edible               gray           none             abundant
-## 6            edible             yellow         almond             numerous
-##   mushrooms.habitat
-## 1             urban
-## 2           grasses
-## 3           meadows
-## 4             urban
-## 5           grasses
-## 6           grasses</code></pre>
+mushroomssubset &lt;- subset(mushrooms, odor == &quot;pungent&quot; &amp; habitat == &quot;urban&quot;, select = c(classes, capcolor, odor, population, habitat))
+print(mushroomssubset)</code></pre>
+<pre><code>##        classes capcolor    odor population habitat
+## 1    poisonous    brown pungent  scattered   urban
+## 4    poisonous    white pungent  scattered   urban
+## 14   poisonous    white pungent    several   urban
+## 19   poisonous    white pungent  scattered   urban
+## 20   poisonous    brown pungent  scattered   urban
+## 32   poisonous    white pungent  scattered   urban
+## 38   poisonous    brown pungent  scattered   urban
+## 54   poisonous    brown pungent    several   urban
+## 55   poisonous    white pungent    several   urban
+## 79   poisonous    brown pungent    several   urban
+## 115  poisonous    white pungent    several   urban
+## 136  poisonous    white pungent    several   urban
+## 181  poisonous    white pungent    several   urban
+## 206  poisonous    white pungent    several   urban
+## 229  poisonous    brown pungent    several   urban
+## 232  poisonous    white pungent  scattered   urban
+## 244  poisonous    white pungent    several   urban
+## 270  poisonous    brown pungent  scattered   urban
+## 272  poisonous    brown pungent    several   urban
+## 316  poisonous    white pungent    several   urban
+## 328  poisonous    brown pungent    several   urban
+## 331  poisonous    brown pungent    several   urban
+## 358  poisonous    brown pungent  scattered   urban
+## 381  poisonous    brown pungent  scattered   urban
+## 386  poisonous    brown pungent  scattered   urban
+## 400  poisonous    brown pungent  scattered   urban
+## 403  poisonous    brown pungent    several   urban
+## 418  poisonous    brown pungent  scattered   urban
+## 423  poisonous    brown pungent  scattered   urban
+## 493  poisonous    brown pungent    several   urban
+## 524  poisonous    brown pungent  scattered   urban
+## 557  poisonous    brown pungent    several   urban
+## 591  poisonous    white pungent  scattered   urban
+## 596  poisonous    brown pungent    several   urban
+## 600  poisonous    brown pungent  scattered   urban
+## 614  poisonous    white pungent  scattered   urban
+## 655  poisonous    white pungent    several   urban
+## 699  poisonous    brown pungent    several   urban
+## 734  poisonous    white pungent  scattered   urban
+## 738  poisonous    white pungent  scattered   urban
+## 749  poisonous    brown pungent    several   urban
+## 777  poisonous    brown pungent  scattered   urban
+## 796  poisonous    brown pungent  scattered   urban
+## 803  poisonous    brown pungent    several   urban
+## 813  poisonous    white pungent    several   urban
+## 815  poisonous    brown pungent    several   urban
+## 838  poisonous    white pungent  scattered   urban
+## 909  poisonous    brown pungent    several   urban
+## 928  poisonous    brown pungent  scattered   urban
+## 950  poisonous    brown pungent    several   urban
+## 951  poisonous    white pungent  scattered   urban
+## 957  poisonous    white pungent    several   urban
+## 985  poisonous    white pungent  scattered   urban
+## 1000 poisonous    white pungent    several   urban
+## 1025 poisonous    white pungent    several   urban
+## 1040 poisonous    brown pungent  scattered   urban
+## 1048 poisonous    brown pungent  scattered   urban
+## 1065 poisonous    white pungent  scattered   urban
+## 1082 poisonous    brown pungent    several   urban
+## 1096 poisonous    brown pungent    several   urban
+## 1107 poisonous    white pungent    several   urban
+## 1131 poisonous    brown pungent    several   urban
+## 1188 poisonous    brown pungent    several   urban
+## 1208 poisonous    white pungent  scattered   urban
+## 1241 poisonous    white pungent    several   urban
+## 1244 poisonous    white pungent  scattered   urban
+## 1268 poisonous    brown pungent    several   urban
+## 1276 poisonous    white pungent  scattered   urban
+## 1287 poisonous    brown pungent  scattered   urban
+## 1324 poisonous    white pungent  scattered   urban
+## 1343 poisonous    white pungent  scattered   urban
+## 1362 poisonous    brown pungent    several   urban
+## 1381 poisonous    white pungent    several   urban
+## 1383 poisonous    white pungent    several   urban
+## 1406 poisonous    white pungent  scattered   urban
+## 1421 poisonous    white pungent  scattered   urban
+## 1430 poisonous    brown pungent    several   urban
+## 1434 poisonous    white pungent  scattered   urban
+## 1435 poisonous    brown pungent  scattered   urban
+## 1445 poisonous    brown pungent  scattered   urban
+## 1452 poisonous    brown pungent    several   urban
+## 1460 poisonous    white pungent  scattered   urban
+## 1473 poisonous    white pungent    several   urban
+## 1486 poisonous    brown pungent    several   urban
+## 1492 poisonous    white pungent  scattered   urban
+## 1507 poisonous    brown pungent  scattered   urban
+## 1531 poisonous    white pungent  scattered   urban
+## 1533 poisonous    white pungent  scattered   urban
+## 1538 poisonous    white pungent  scattered   urban
+## 1547 poisonous    brown pungent  scattered   urban
+## 1556 poisonous    brown pungent  scattered   urban
+## 1569 poisonous    brown pungent    several   urban
+## 1584 poisonous    brown pungent    several   urban
+## 1586 poisonous    white pungent    several   urban
+## 1614 poisonous    white pungent  scattered   urban
+## 1626 poisonous    white pungent    several   urban
+## 1629 poisonous    brown pungent  scattered   urban
+## 1631 poisonous    white pungent  scattered   urban
+## 1668 poisonous    white pungent  scattered   urban
+## 1670 poisonous    white pungent    several   urban
+## 1708 poisonous    brown pungent    several   urban
+## 1732 poisonous    brown pungent    several   urban
+## 1740 poisonous    white pungent    several   urban
+## 1749 poisonous    brown pungent  scattered   urban
+## 1766 poisonous    white pungent  scattered   urban
+## 1778 poisonous    brown pungent  scattered   urban
+## 1779 poisonous    white pungent    several   urban
+## 1787 poisonous    brown pungent  scattered   urban
+## 1791 poisonous    white pungent    several   urban
+## 1799 poisonous    white pungent    several   urban
+## 1823 poisonous    white pungent    several   urban
+## 1844 poisonous    brown pungent  scattered   urban
+## 1917 poisonous    white pungent    several   urban
+## 1931 poisonous    white pungent  scattered   urban
+## 1946 poisonous    white pungent    several   urban
+## 1973 poisonous    brown pungent    several   urban
+## 1988 poisonous    white pungent  scattered   urban
+## 1990 poisonous    brown pungent  scattered   urban
+## 2005 poisonous    white pungent    several   urban
+## 2068 poisonous    brown pungent    several   urban
+## 2075 poisonous    white pungent    several   urban
+## 2090 poisonous    brown pungent  scattered   urban
+## 2148 poisonous    brown pungent    several   urban
+## 2289 poisonous    brown pungent  scattered   urban
+## 2352 poisonous    white pungent  scattered   urban
+## 2376 poisonous    white pungent    several   urban
+## 2479 poisonous    brown pungent  scattered   urban
+## 2496 poisonous    white pungent    several   urban</code></pre>
+</div>
+<div id="conclusion" class="section level3">
+<h3>Conclusion</h3>
+<p>It appears that in urban areas all brown or white cap mushrooms with a pungent odor are poisonous.</p>
 </div>
 </div>
 

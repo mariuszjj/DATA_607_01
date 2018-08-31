@@ -93,7 +93,11 @@ head(mushrooms)
 
 ```{r}
 # Create a data frame with columns: classes, capcolor, odor, population and habitat 
-mushroomssubset <- data.frame(mushrooms$classes,mushrooms$capcolor,mushrooms$odor,mushrooms$population,mushrooms$habitat)
-head(mushroomssubset)
+mushroomssubset <- subset(mushrooms, odor == "pungent" & habitat == "urban", select = c(classes, capcolor, odor, population, habitat))
+print(mushroomssubset)
 ```
+
+### Conclusion
+
+It appears that in urban areas all brown or white cap mushrooms with a pungent odor are poisonous.
 

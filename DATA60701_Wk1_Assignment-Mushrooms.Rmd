@@ -1,0 +1,99 @@
+---
+title: "Week 1 Assignment – Loading Data into a Data Frame"
+author: "Marius Jaskowski"
+date: "8/30/2018"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## ASSIGNMENT INFORMATION
+
+**Your task** is to study the Mushrooms dataset <https://archive.ics.uci.edu/ml/datasets/Mushroom> and the associated description of the data (i.e. “data dictionary”). You may need to look around a bit, but it’s there! You should take the data, and create a data frame with a subset of the columns in the dataset. You should include the column that indicates edible or poisonous and three or four other columns. You should also add meaningful column names and replace the abbreviations used in the data—for example, in the appropriate column, “e” might become “edible.” Your deliverable is the R code to perform these transformation tasks.
+
+### Read Mushroom Data
+
+```{r}
+# Read CSV into R
+mushrooms <- read.csv("https://archive.ics.uci.edu/ml/machine-learning-databases/mushroom/agaricus-lepiota.data", header=FALSE, sep=",")
+head (mushrooms)
+```
+
+### Read Data Dictionary
+
+```{r}
+# Read Table into R
+mushrooms_dictionay <- read.table("./mushroom_attribute_info.txt", row.names=1, sep=":")
+print(mushrooms_dictionay)
+```
+
+### Apply Headers from the Dictionary to the Data Frame
+
+```{r}
+# Apply headers to mushroom data from the mushroom dictionary
+names(mushrooms) <- row.names(mushrooms_dictionay)
+head(mushrooms)
+```
+
+### Replace Abbreviations Used with Their Values from the Legend
+
+```{r}
+# Replace under classes all abbreviations as follows: edible=e,poisonous=p 
+mushrooms$classes <- as.character(mushrooms$classes)
+mushrooms$classes[mushrooms$classes == "e"] <- "edible"
+mushrooms$classes[mushrooms$classes == "p"] <- "poisonous"
+# Replace under capcolor all abbreviations as follows: brown=n,buff=b,cinnamon=c,gray=g,green=r,pink=p,purple=u,red=e,white=w,yellow=y
+mushrooms$capcolor <- as.character(mushrooms$capcolor)
+mushrooms$capcolor[mushrooms$capcolor == "n"] <- "brown"
+mushrooms$capcolor[mushrooms$capcolor == "b"] <- "buff"
+mushrooms$capcolor[mushrooms$capcolor == "c"] <- "cinnamon"
+mushrooms$capcolor[mushrooms$capcolor == "g"] <- "gray"
+mushrooms$capcolor[mushrooms$capcolor == "r"] <- "green"
+mushrooms$capcolor[mushrooms$capcolor == "p"] <- "pink"
+mushrooms$capcolor[mushrooms$capcolor == "u"] <- "purple"
+mushrooms$capcolor[mushrooms$capcolor == "e"] <- "red"
+mushrooms$capcolor[mushrooms$capcolor == "w"] <- "white"
+mushrooms$capcolor[mushrooms$capcolor == "y"] <- "yellow"
+# Replace under odor all abbreviations as follows: almond=a,anise=l,creosote=c,fishy=y,foul=f,musty=m,none=n,pungent=p,spicy=s
+mushrooms$odor <- as.character(mushrooms$odor)
+mushrooms$odor[mushrooms$odor == "a"] <- "almond"
+mushrooms$odor[mushrooms$odor == "l"] <- "anise"
+mushrooms$odor[mushrooms$odor == "c"] <- "creosote"
+mushrooms$odor[mushrooms$odor == "y"] <- "fishy"
+mushrooms$odor[mushrooms$odor == "f"] <- "foul"
+mushrooms$odor[mushrooms$odor == "m"] <- "musty"
+mushrooms$odor[mushrooms$odor == "n"] <- "none"
+mushrooms$odor[mushrooms$odor == "p"] <- "pungent"
+mushrooms$odor[mushrooms$odor == "s"] <- "spicy"
+# Replace under population all abbreviations as follows: abundant=a,clustered=c,numerous=n,scattered=s,several=v,solitary=y
+mushrooms$population <- as.character(mushrooms$population)
+mushrooms$population[mushrooms$population == "a"] <- "abundant"
+mushrooms$population[mushrooms$population == "c"] <- "clustered"
+mushrooms$population[mushrooms$population == "n"] <- "numerous"
+mushrooms$population[mushrooms$population == "s"] <- "scattered"
+mushrooms$population[mushrooms$population == "v"] <- "several"
+mushrooms$population[mushrooms$population == "y"] <- "solitary"
+# Replace under habitat all abbreviations as follows: grasses=g,leaves=l,meadows=m,paths=p,urban=u,waste=w,woods=d
+mushrooms$habitat <- as.character(mushrooms$habitat)
+mushrooms$habitat[mushrooms$habitat == "g"] <- "grasses"
+mushrooms$habitat[mushrooms$habitat == "l"] <- "leaves"
+mushrooms$habitat[mushrooms$habitat == "m"] <- "meadows"
+mushrooms$habitat[mushrooms$habitat == "p"] <- "paths"
+mushrooms$habitat[mushrooms$habitat == "u"] <- "urban"
+mushrooms$habitat[mushrooms$habitat == "w"] <- "waste"
+mushrooms$habitat[mushrooms$habitat == "d"] <- "woods"
+head(mushrooms)
+```
+
+### Create a Data Frame with a Subset of the Columns in the Dataset
+
+```{r}
+# Create a data frame with columns: classes, capcolor, odor, population and habitat 
+mushroomssubset <- data.frame(mushrooms$classes,mushrooms$capcolor,mushrooms$odor,mushrooms$population,mushrooms$habitat)
+head(mushroomssubset)
+```
+
